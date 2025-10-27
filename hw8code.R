@@ -108,8 +108,7 @@ Zoop_annual_by_lake_trimmed <- ggplot(yearly, aes(x = as.numeric(year), y = dens
 Zoop_annual_by_lake_trimmed
 
 ## This plot shows, at a very coarse scale, the Zooplankton densities in each of the NTL Southern lakes.
-## We see a large jump in total density around 2010 -- which we suspect is due to the spiny water flea invasion.
-## This would likely show up in the species composition and would require more analysis.
+## We see a large jump in total density around 2010
 
 # SECOND FIGURE
 # monthly mean Zoop density over a much shorter span to see monthly resolution
@@ -233,3 +232,4 @@ Zoop_species_comp <- ggplot(lake_species, aes(x = lakeid, y = prop, fill = speci
 Zoop_species_comp
 
 ## There are some species which are very rare showing up here, which change the balances of species composition.
+## Some species with minimal observations may not have enough information for full statistics.
