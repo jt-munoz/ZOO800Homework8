@@ -54,7 +54,6 @@ data$year <- format(data$sample_date, "%Y")
 # total mean density per year across all species
 annual <- aggregate(density ~ lakeid + year, data = data, FUN = mean, na.rm = TRUE)
 
-# this includes data from Mendota past 2019, which doesn't really tell us anything without comparison to the other lakes.
 # next step is to trim down to 2019 to compare with other lakes
 # don't exclude the data, just trim the graph with xlim and ylim
 
