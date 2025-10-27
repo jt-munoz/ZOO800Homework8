@@ -27,7 +27,6 @@ entity_id <- entity_names$entityId[
   grepl("zooplankton", entity_names$entityName, ignore.case = TRUE)
 ][1]
 
-# Safely read data from raw bytes
 raw_bytes <- read_data_entity(package_id, entity_id)
 con <- rawConnection(raw_bytes)
 on.exit(close(con), add = TRUE)
@@ -55,26 +54,7 @@ data$year <- format(data$sample_date, "%Y")
 # total mean density per year across all species
 annual <- aggregate(density ~ lakeid + year, data = data, FUN = mean, na.rm = TRUE)
 
-# plot annual mean zooplankton density by lake
-Zoop_annual_by_lake <- ggplot(annual, aes(x = as.numeric(year), y = density, color = lakeid, group = lakeid)) +
-  geom_line(size = 0.8) +
-  geom_point(size = 2) +
-  labs(
-    title = "Annual Mean Zooplankton Density by Lake",
-    x = "Year",
-    y = "Mean Density (per m³)",
-    color = "Lake ID"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    legend.position = "top",
-    plot.title = element_text(face = "bold")
-  )
-
-Zoop_annual_by_lake
-
 # this includes data from Mendota past 2019, which doesn't really tell us anything without comparison to the other lakes.
-
 # next step is to trim down to 2019 to compare with other lakes
 # don't exclude the data, just trim the graph with xlim and ylim
 
